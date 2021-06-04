@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+    <link href="tailwind.min.css" rel="stylesheet">
+</head>
+<body class="p-4">
+    
+    <div id="app">
+        <div class="center">RPGSI</div>
+        
+        <div class="font-bold">Disponible</div>
+        <div v-for="jeu in jeux">
+            <div v-if="jeu.disponible">
+                <div class="p-2"></div>
+                <div class="font-semibold"> {{ jeu.nom }} </div>
+                <div> {{ jeu.description }} </div>
+                <div class="bg-green-300 inline-flex rounded py-2 px-4" @click="prendre(jeu.nom)">Prendre</div>
+            </div> 
+        </div>
+        <div class="p-2"></div>
+        <div class="p-2"></div>
+
+        <div class="font-bold">Indisponible</div>
+        <div v-for="jeu in jeux">
+            <div v-if="!jeu.disponible">
+                <div class="p-2"></div>
+                <div class="font-semibold"> {{ jeu.nom }} </div>
+                <div> {{ jeu.description }} </div>
+                <div class="bg-gray-200 inline-flex rounded py-2 px-4" @click="rendre(jeu.nom)">Rendre</div>
+            </div> 
+        </div>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
